@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test Embed of Spotify Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <style>
+        html {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--
+
+    example embed code from the playlist i created with the API (copied from Spotify app): 
+    <iframe src="https://open.spotify.com/embed/user/circuitspore/playlist/1TIjstbjOQ0w0Pny2TeNmv" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    URL and ID captured in the return object after creating the playlist:
+    external_urls.spotify: "https://open.spotify.com/playlist/1TIjstbjOQ0w0Pny2TeNmv"
+    id: "1TIjstbjOQ0w0Pny2TeNmv"
+
+    Looks like a match!
+
+    So since we know the username (aka ID) from the "me" user API request, and we know the playlist ID from the return object from creating the playlist, we should be able to build out the URL to use with the embed:
+
+    https://open.spotify.com/embed/user/{user ID}/playlist/{playlist ID}
+    
+    So let's embed this puppy.
+
+-->
+
+<h1>This ain't yer normal Spotify.</h1>
+
+<iframe src="https://open.spotify.com/embed/user/circuitspore/playlist/1TIjstbjOQ0w0Pny2TeNmv" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    
+</body>
+</html>

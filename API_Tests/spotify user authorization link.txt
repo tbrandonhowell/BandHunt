@@ -1,0 +1,9 @@
+
+What works:
+
+https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=http://www.brandonhowell.com/
+
+
+With scopes added:
+
+https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=http://www.brandonhowell.com/&scope=playlist-modify-public

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Spotify User Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+        
+    <script type="text/javascript">
+
+
+        // https://developer.spotify.com/documentation/web-api/reference/users-profile/
+        // https://api.spotify.com/v1/me
+        // https://api.spotify.com/v1/users/{user_id}
+
+        var accessToken = "BQC5-2ZLDvbJVqEf6rILq31i4DFycG5OzQaosfCtNmGlYiiiJjynijLQf8e10r-EvrdFKgLEe_-9-Gv85iHf0LK3iU7XTotfevc4vMfvfBtW8GNDRbH8h6-rEOEb-Vpvlqol63-LACBn6pbC";
+
+        $.ajax({ // the request to the API
+        url: 'https://api.spotify.com/v1/me', // where the data is
+        method: 'GET',
+        headers: {'Authorization': 'Bearer ' + accessToken}
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+        console.log('response came back!!!');
+        console.log(response);
+        });
+        // ^^ this ajax call worked and returned an object with the current user's info
+        // id: "circuitspore"
+        // display_name: "Brandon Howell"
+
+    </script>    
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Param Grab</title>
+</head>
+<body>
+    <h3>Add values to the "cheese" and "pie" parameters to the querystring to see them appear in console log</h3>
+    <div id="paramsDiv">
+
+    </div>
+
+    <script>
+
+        // help from https://davidwalsh.name/query-string-javascript
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        console.log("Full querystring: " + urlParams.toString());
+        console.log("Cheese: " + urlParams.get('cheese'));
+        console.log("Pie: " + urlParams.get('pie'));
+    
+    </script>
+</body>
+</html>

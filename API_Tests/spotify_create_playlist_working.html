@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Spotify Create Playlist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+        
+    <script type="text/javascript">
+
+
+        // https://developer.spotify.com/documentation/web-api/reference/playlists/create-playlist/
+        // POST https://api.spotify.com/v1/users/{user_id}/playlists
+        // example user ID: circuitspore
+  
+        var accessToken = "BQD1WA5aKA0DchLwt_Xw5sXVvIXE-fvvqNaiABlw7tRkdqTRxEdJrTxsyFn46fkZ3hZybY1Kg3L3jcldJgm8dzBDqX5_0SCZgzkFvRcvnvQJ57KZ6lNH8CvkOE1MxHPDtuhGtbjJyYH3H9mePsaBXvGw4wwlu5p7RlmGJfhEwHCqMXu_";
+
+ 
+        // from https://api.jquery.com/jquery.post/
+        $.ajax({
+            headers: {'Authorization': 'Bearer ' + accessToken}, // standard access token
+            method: "POST",
+            contentType: 'application/json',
+            url: 'https://api.spotify.com/v1/users/circuitspore/playlists', // using the "circuitspore" user
+            data: JSON.stringify({name:'api playlist 1', public:'true'}), // JSON string for the input here
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+        console.log('response came back!!!');
+        console.log(response);
+        });
+
+        // data from the response object:
+        // external_urls.spotify: "https://open.spotify.com/playlist/1TIjstbjOQ0w0Pny2TeNmv"
+        // id: "1TIjstbjOQ0w0Pny2TeNmv"
+        // name: "api playlist 1"
+        // public: true
+
+    </script>    
+</body>
+</html>
