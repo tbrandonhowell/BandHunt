@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ipinfo.io test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+<body>
+
+
+
+
+    <script>
+    
+        // clued in on this by https://stackoverflow.com/questions/41711703/how-to-get-client-ip-address-in-javascript
+        // the above URL from ipinfo.io returns an object with the location data for the ip address
+        // and the output of the script can be accessed @ getIP
+
+        function getIP(json) {
+            document.write("<p>My public IP address is: ", json.ip);
+            document.write("<p>My city is: ", json.city);
+            document.write("<p>My state is: ", json.region);
+            document.write("<p>My zip code is: ", json.postal);
+        }
+
+    </script>
+
+    <script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
+    
+
+    
+</body>
+</html>

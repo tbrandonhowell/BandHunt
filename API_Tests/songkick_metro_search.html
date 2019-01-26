@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SongKick Geo Search Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+
+    <script>
+
+        // my API key: A1gWVGMiT6nFuDTr
+
+        // API URL structure for searching for location matches:
+        // https://api.songkick.com/api/3.0/search/locations.json?query={search_query}&apikey={your_api_key}
+    
+        $.ajax({ // the request to the API
+            url: 'https://api.songkick.com/api/3.0/search/locations.json?query=raleigh&apikey=A1gWVGMiT6nFuDTr', // where the data is
+            method: 'GET'
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+            console.log('location search response came back!!!');
+            console.log(response);
+        });
+
+        // somehow we'll need to decide which of the returned objects to pick
+        // but let's do a test with the raleigh metro area (metro area id of 17913)
+        // API URL structure for searching to find performances in a metro area:
+        // https://api.songkick.com/api/3.0/metro_areas/{metro_area_id}/calendar.json?apikey={your_api_key}
+
+        $.ajax({ // the request to the API
+            url: 'https://api.songkick.com/api/3.0/metro_areas/17913/calendar.json?apikey=A1gWVGMiT6nFuDTr', // where the data is
+            method: 'GET'
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+            console.log('metro performances response came back!!!');
+            console.log(response);
+        });
+        
+
+
+        // is there a list of songkick's metro areas?
+
+    
+    
+    </script>
+    
+</body>
+</html>

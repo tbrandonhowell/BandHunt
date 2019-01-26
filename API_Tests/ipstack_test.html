@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IPStack Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+<body>
+
+
+    <script>
+
+        // TODO: NOTE: Abandoning this in favor of http://ipinfo.io/?format=jsonp&callback=getIP
+
+        // my API key: b00aa314a24348773bc20d285161aba7
+
+        // API URL structure:
+        // http://api.ipstack.com/174.109.247.232?access_key=b00aa314a24348773bc20d285161aba7
+        
+        $.ajax({ // the request to the API
+        url: 'https://api.songkick.com/api/3.0/search/locations.json?query=raleigh&apikey=A1gWVGMiT6nFuDTr', // where the data is
+        method: 'GET'
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+        console.log('response came back!!!');
+        console.log(response);
+        });
+    
+    </script>
+    
+</body>
+</html>

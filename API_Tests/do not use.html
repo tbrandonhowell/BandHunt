@@ -1,0 +1,68 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Spotify General</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+        Client ID 8ecf5355cbd5468ca774341c25284642
+        Client Secret 6329a6b8a0c642a98a7e1ec962765329 
+         
+    
+    GET https://api.spotify.com/v1/search?q="radiohead"&type=artist
+
+
+    curl -X GET "https://api.spotify.com/v1/search?q=tania%20bowra&type=artist" -H "Authorization: Bearer {your access token}"
+
+    curl -X 
+    "POST" -H 
+    "Authorization: Basic ZjM4ZjAw...WY0MzE=" -d 
+    grant_type=client_credentials 
+    https://accounts.spotify.com/api/token
+
+
+
+    GET https://accounts.spotify.com/authorize
+
+
+
+    <script type="text/javascript">
+
+
+        $.ajax({ // the request to the API
+        url: 'https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=', // where the data is
+        method: 'GET' // method
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+        console.log('response came back!!!');
+        console.log(response);
+        });
+
+
+        $.ajax({
+            url: 'https://accounts.spotify.com/api/token',
+            beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer 6QXNMEMFHNY4FJ5ELNFMP5KRW52WFXN5")
+        }, success: function(data){
+            alert(data);
+            //process the JSON data etc
+        }
+        })
+
+    
+        // $.ajax({ // the request to the API
+        // url: 'http://api.alperg.com/grocery', // where the data is
+        // method: 'GET' // method
+        // }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+        // console.log('response came back!!!');
+        // console.log(response);
+        // });
+
+    </script>    
+</body>
+</html>

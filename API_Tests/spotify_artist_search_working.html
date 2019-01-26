@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Spotify General</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+        
+    <script type="text/javascript">
+
+        // App info: 
+        // Client ID 8ecf5355cbd5468ca774341c25284642
+         
+
+        // GET https://api.spotify.com/v1/search?q="radiohead"&type=artist
+        // ^^ structure of an artist search
+        // the quotes denote exact match in the case where there are multiple words in the artist name
+        // the resulting artist objects have popularity ratings associated with them
+        // in instances where there are more than one artist that match a search term, we could grab the most popular artist as our match
+
+        // you have to redirect the user to a spotify URL to make authorization happen:
+        // This authorization request appears to work:
+        // https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=http://www.brandonhowell.com/
+        // the redirect_uri is where spotify will dump the user once they authorize/decline
+        // i used brandonhowell.com since it was simple. had a little bit of an issue with using file:/// URIs
+
+
+        // if the user authorizes the app, the resulting URL that they get redirected to will have an access token in a query parameter - it is valid for 24 hours
+        // What the positive response looked like when I used brandonhowell.com as the redirect uri:
+        // http://www.brandonhowell.com/#access_token=BQBzSff4HsvgmOzH8jsWnCPPeAqmZ0au_65wNQxzxBXCdxzkHsYtZnjt4eVmkk4HexfTKdfs7I4u4I34Ttd1UNVeG8OdtsVYwcFBCbsV-fs-0ct8Z3ftn3KXcbc4-silOr058MNCDR20-aC2&token_type=Bearer&expires_in=3600
+        // This is the token:
+        // BQBzSff4HsvgmOzH8jsWnCPPeAqmZ0au_65wNQxzxBXCdxzkHsYtZnjt4eVmkk4HexfTKdfs7I4u4I34Ttd1UNVeG8OdtsVYwcFBCbsV-fs-0ct8Z3ftn3KXcbc4-silOr058MNCDR20-aC2
+        // ^^ this token should no longer work
+
+        var accessToken = "BQBzSff4HsvgmOzH8jsWnCPPeAqmZ0au_65wNQxzxBXCdxzkHsYtZnjt4eVmkk4HexfTKdfs7I4u4I34Ttd1UNVeG8OdtsVYwcFBCbsV-fs-0ct8Z3ftn3KXcbc4-silOr058MNCDR20-aC2";
+
+        $.ajax({ // the request to the API
+        url: 'https://api.spotify.com/v1/search?q="radiohead"&type=artist', // where the data is
+        method: 'GET',
+        headers: {'Authorization': 'Bearer ' + accessToken}
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+        console.log('response came back!!!');
+        console.log(response);
+        });
+        // ^^ this ajax call worked and returned an object with three artists in it
+
+    </script>    
+</body>
+</html>
