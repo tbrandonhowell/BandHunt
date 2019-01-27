@@ -7,3 +7,11 @@ https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c2528464
 With scopes added:
 
 https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=http://www.brandonhowell.com/&scope=playlist-modify-public
+
+
+https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=http://boot.camp:8888/test.html&scope=playlist-modify-public
+
+
+
+this link doesn't work b/c chrome won't accept a redirect to a file:/// URL from an external site
+https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=file:///Users/Brandon/Documents/bootcamp/7_projects/Project_1/Test_Build/test.html&scope=playlist-modify-public

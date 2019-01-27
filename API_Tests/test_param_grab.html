@@ -15,11 +15,29 @@
     <script>
 
         // help from https://davidwalsh.name/query-string-javascript
-    
         var urlParams = new URLSearchParams(window.location.search);
         console.log("Full querystring: " + urlParams.toString());
-        console.log("Cheese: " + urlParams.get('cheese'));
-        console.log("Pie: " + urlParams.get('pie'));
+        console.log("Query Cheese: " + urlParams.get('cheese'));
+        console.log("Query Pie: " + urlParams.get('pie'));
+
+        // ^^ but this doesn't work with hashes like the spotify URLs
+
+        // so we need to grab the hash, then explode it, then grab what we need
+        var hash = window.location.hash;
+        console.log("Full hash: " + hash);
+        hash = hash.slice(1); // remove first character
+        console.log("Removed #: " + hash);
+        // help from https://stackoverflow.com/questions/23699666/javascript-get-and-set-url-hash-parameters
+        var result = hash.split('&').reduce(function (result, item) {
+            var parts = item.split('=');
+            result[parts[0]] = parts[1];
+            return result;
+        }, {});
+        // ^^ not 100% sure how this works; need to study it more
+        console.log(result);
+        console.log(result.drink); // grabbing a specific element in the newly created object
+
+    
     
     </script>
 </body>
