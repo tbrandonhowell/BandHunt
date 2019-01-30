@@ -122,7 +122,7 @@ $.ajax({ // the request to the API
             url: 'https://api.spotify.com/v1/search?q="' + artistNameArray[n] + '"&type=artist', // where the data is
             method: 'GET',
             headers: {'Authorization': 'Bearer ' + accessToken},
-            async: false
+            // async: false
         }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
             console.log('artist ID response came back!!!');
             if(response.artists.items[0].id) {
@@ -142,7 +142,7 @@ $.ajax({ // the request to the API
             url: 'https://api.spotify.com/v1/artists/' + artistIdArray[z] + '/top-tracks?country=US', // where the data is
             method: 'GET',
             headers: {'Authorization': 'Bearer ' + accessToken},
-            async: false
+            // async: false
         }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
             console.log('song ID response came back!!!');
             console.log(response.tracks[0].id);
@@ -161,7 +161,7 @@ $.ajax({ // the request to the API
         url: 'https://api.spotify.com/v1/users/' + spotifyUserID + '/playlists', // using the user ID
         data: JSON.stringify({name:'api playlist 3', public:'true'}), // JSON string for the input here
         // TODO: figure out naming convention for the playlists we create
-        async: false
+        // async: false
     }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
         console.log('playlist creation response came back!!!');
         console.log(response);
@@ -184,7 +184,7 @@ $.ajax({ // the request to the API
 
     // then post the songs to the playlist
     $.ajax({
-        async: false,
+        // async: false,
         headers: {'Authorization': 'Bearer ' + accessToken}, // standard access token
         method: "POST",
         contentType: 'application/json',
