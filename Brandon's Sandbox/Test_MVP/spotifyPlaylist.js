@@ -1,6 +1,7 @@
 console.log("spotifyPlaylist.js is loaded");
 
 $(document).on("click", "#createPlaylistBTN", function() { 
+    $("#exampleModal").modal(); // trigger the modal
     console.log("Create playlist button was clicked");
     playlistName = $("#inputPlaylistName").val().trim();
     console.log("playlistName: " + playlistName);
@@ -88,6 +89,7 @@ $(document).on("click", "#createPlaylistBTN", function() {
         var playerFrame = '<iframe src="https://open.spotify.com/embed/user/' + spotifyUserID + '/playlist/' + playlistID + '" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
         $("#rightSide").empty();
         $("#rightSide").append(playerFrame);
+        $("#exampleModal").modal("hide"); // close the modal
     });
     //============================
 
