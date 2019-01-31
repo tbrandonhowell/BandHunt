@@ -6,9 +6,7 @@
     <title>Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="test.css" />
-    <script src="test.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- ^^ included to capture city name for IP address -->
@@ -17,28 +15,29 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                City: <span id="city"></span> // 
+                State: <span id="state"></span> // 
+                Spotify User: <span id="spotifyUserID"></span> //
+                Spotify RName: <span id="spotifyRealName"></span> //
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-5">
                 <table id="eventTable" class="table table-sm small">
                     <tr>
-                        <td colspan="6">
-                            <img src="powered-by-songkick-pink.png" class="img-flud">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Image</td>
+                        <!-- <td>Image</td> -->
                         <td>Band</td>
                         <td>Venue</td>
                         <td>Date</td>
-                        <td>Time</td>
+                        <!-- <td>Time</td> -->
                         <td>Favorite</td>
                     </tr>
                 </table>
             </div>
             <div class="col-md-5" id="rightSide">
-                <h3>
-                    Are you a Spotify user? <a href="" id="spotifyLink">Click here</a> to build a Spotify playlist and discover new artists that you can catch next week in your town!
-                </h3>
+
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -46,7 +45,11 @@
     
 
 
-    <script src="test.js"></script>
+    <script src="base.js"></script>
+    <!-- after base.js !! --><script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
+    <script src="songkick.js"></script>
+    <script src="spotifyUser.js"></script>
+    <script src="spotifyPlaylist.js"></script>
     <script>
     
     
