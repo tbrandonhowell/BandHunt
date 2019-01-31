@@ -1,0 +1,29 @@
+.jumbotron{
+    background-image: url(red.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.page-header{
+    height: 10%;
+    color:gold;
+    margin-left:10%;
+    margin-bottom:40px;
+    font-family: 'Shrikhand', cursive;
+}
+#eventTable {
+    width: 40vw;
+    color: gold;
+}
+.fa {
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+  
+.fa:hover {
+    color: darkblue;
+}

@@ -40,7 +40,7 @@ if (accessToken) {
         }
     });
 } else { // print the "click to connect your account" link
-    var updateRightSide = '<h3>Are you a Spotify user? <a href="' + spotifyLink + '" id="spotifyLink">Click here</a> connect your Spotify account and build out playlists of bands coming to your town!" color="yellow"</h3><br>"';
+    var updateRightSide = '<h3>Are you a Spotify user? <a href="' + spotifyLink + '" id="spotifyLink">Click here</a> connect your Spotify account and build out playlists of bands coming to your town!</h3><br><img src="img/KH-Spotify">"';
     $("#rightSide").empty(); // clear the 'rightSide' div and 
     $("#rightSide").html(updateRightSide); // paint new message requesting playlist creation
 };
