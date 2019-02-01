@@ -10,13 +10,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- ^^ included to capture city name for IP address -->
 </head>
 <body>
 
 <div class="jumbotron">
     <div class="page-header">
-        <h1 class="title"><span class="title1">Band Hunt</span></h1>
+        <h1 class="title"><span class="title">Band Hunt</span></h1>
         <p>Band Hunt is the premier website to hear music from all the artists coming to your area.</p>     
      </div>
     <div class="container">
@@ -44,7 +43,7 @@
         <div class="row">
             <div class="col-md-8"></div>
             <div class="col-md-4">
-                <img src="img/KH-Spotify.jpg" alt="Spotify-logo" height="42" width="90">
+                <img src="assets/images/KH-Spotify.jpg" alt="Spotify-logo" height="42" width="90">
             </div>
         </div>
         <div class="row">
@@ -58,11 +57,9 @@
                 <table id="eventTable" class="table table-striped table-sm small">
                     <tbody>
                     <tr>
-                        <!-- <td>Image</td> -->
                         <th>Band</th>
                         <th>Venue</th>
                         <th>Date</th>
-                        <!-- <td>Time</td> -->
                         <th>Vote</th>
                     </tr>
                     </tbody>
@@ -74,6 +71,7 @@
         <div class="row">
             <div class="col-md-12"></div>
         </div>
+            <div class="modal" id="exampleModal" tabindex="-1" role="example"></div>
         </div>
     </div>
 </div>
