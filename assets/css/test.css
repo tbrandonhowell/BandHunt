@@ -1,5 +1,5 @@
 .jumbotron{
-    background-image: url(img/crowd_sea.jpg);
+    background-image: url(../images/crowd_sea.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -21,7 +21,7 @@ table{
 h3{
     color:yellow;
 }
-.title1{
+.title{
     font-weight: 400px;
     color:gold;
     font-family: 'Monoton', cursive;
@@ -57,6 +57,8 @@ label{
 th{
     font-size:20px;
     background-color:gold;
+    position: sticky; 
+    top: 0;
 }
 tr{
     font-size:15px;
