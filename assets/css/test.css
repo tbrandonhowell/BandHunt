@@ -33,16 +33,17 @@ body{
     color:gold;
     font-family: 'Monoton', cursive;
     font-size:50px;
-    margin-left:12px;
 }
 p{
     font-family: 'Righteous', cursive;
     font-size:20px;
     color:gold;
-    margin-left:24px;
 }
 form{
     float:right
+}
+h3,h4{
+    color:gold !important;
 }
 label{
     font-weight: 50px;
@@ -53,7 +54,6 @@ label{
 #eventTable{
     background-color:white;
     width: 40vw;
-    max-height:300px;
     color:black;
     overflow:auto;
 }
