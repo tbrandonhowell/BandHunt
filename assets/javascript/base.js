@@ -9,6 +9,7 @@ var zipState; // may be deprecated due to use of local storage
 var metroArea;
 var metroAreaName;
 var eventArray = [];
+var songkickArtistArray = [];
 var artistNameArray = [];
 var accessToken;
 var spotifyUserID;
@@ -21,12 +22,10 @@ var playlistSongsIdArray = [];
 var spotifyRedirDest = window.location.href;
 console.log("spotifyRedirDest: " + spotifyRedirDest);
 var spotifyLink = 'https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=' + spotifyRedirDest + '&scope=playlist-modify-public';
-// TODO: ^^^ this needs to be updated for production
-// TODO: This was fixed 20190202
 //============================
 
 
-// TODO: Need to build in the functionality for capturing the city/state from an input field
+
 //============================
 // IMMEDIATELY CAPTURE CITY/STATE FROM IP ADDRESS IN CASE WE NEED IT
 function getIP(json) {
@@ -100,10 +99,30 @@ if (localStorage.getItem("city") === null) { // if the localstorage city value h
 //============================
 // WRITE LOCALSTORAGE CITY/STATE TO THE SCREEN
 console.log("city from local storage: " + localStorage.getItem("city"));
-$("#city").text(localStorage.getItem("city"));
+$("#city").attr("value",localStorage.getItem("city"));
 console.log("state from local storage: " + localStorage.getItem("state"));
-$("#state").text(localStorage.getItem("state"));
+$("#state").attr("value",localStorage.getItem("state"));
 //============================
+
+// TODO: Need to build in the functionality for capturing the city/state from an input field
+//=============================
+// CAPTURE THE CLICK ON CITY/STATE SUBMIT
+$("#form").on("click", function(event) { 
+    console.log("click captured");
+    event.preventDefault(); // prevent form from trying to submit/refresh the page  
+    var newCity = $("#city").val().trim(); // get the city input
+    console.log("newCity: " + newCity);
+    var newState = $("#state").val().trim(); // get the state input
+    console.log("newState: " + newState);
+    window.localStorage.setItem("city",newCity); // set values to local storage
+    window.localStorage.setItem("state",newState); // set values to local storage
+    console.log("city/state localStorage values set");
+    songkickAPI();
+});
+//=============================
+
+
+
 
 
 
