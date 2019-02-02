@@ -8,23 +8,6 @@ body{
     background-size: cover;
     height:100%;
 }
-/* .jumbotron{
-    background-image: url(../images/crowd_sea.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height:100%;
-} */
-/* .page-header{
-    height: 10%;
-    margin-left:10%;
-    color:yellow;
-    margin-bottom:40px;
-    font-family: 'Monoton', cursive; */
-/* } */
 .btn-default{
     background:gold;
 }
@@ -53,18 +36,12 @@ label{
 }
 #eventTable{
     background-color:white;
-    width: 40vw;
     color:black;
-    overflow:auto;
 }
 #eventTable tbody{
     display:block;
     overflow:scroll;
-    height:300px;
-    width:100%;
-}
-#eventTable thead tr{
-    display:block;
+    height:500px;
 }
 th{
     font-size:20px;
@@ -72,9 +49,6 @@ th{
     position: sticky; 
     top: 0;
 }
-tr{
-    font-size:15px;
-}
 .songkick{
-    color:black;
+    color:gold;
 }
