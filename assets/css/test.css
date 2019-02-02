@@ -10,23 +10,28 @@ body{
 }
 .btn-default{
     background:gold;
+    font-weight: bold;
 }
 .title{
     font-weight: 200px;
     color:gold;
     font-family: 'Monoton', cursive;
     font-size:50px;
+    text-shadow: 0 0 5px #000000, 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000;
 }
 p{
     font-family: 'Righteous', cursive;
     font-size:20px;
     color:gold;
+    text-shadow: 0 0 5px #000000, 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000;
 }
 form{
-    float:right
+    float:right;
+    text-shadow: 0 0 5px #000000, 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000;
 }
-h3,h4{
+h3,h4,h6{
     color:gold !important;
+    text-shadow: 0 0 5px #000000, 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000;
 }
 label{
     font-weight: 50px;
