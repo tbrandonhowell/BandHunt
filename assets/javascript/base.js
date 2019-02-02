@@ -18,9 +18,11 @@ var songsIdArray = [];
 var playlistName;
 var playlistID;
 var playlistSongsIdArray = [];
-var spotifyRedirDest = "http://localhost:8888/index.html";
+var spotifyRedirDest = window.location.href;
+console.log("spotifyRedirDest: " + spotifyRedirDest);
 var spotifyLink = 'https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=' + spotifyRedirDest + '&scope=playlist-modify-public';
 // TODO: ^^^ this needs to be updated for production
+// TODO: This was fixed 20190202
 //============================
 
 

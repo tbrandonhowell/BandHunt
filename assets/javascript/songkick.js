@@ -8,8 +8,10 @@ var songkickAPI = function() {
     // GET METRO AREA BASED ON CITY
     // TODO: need to delete any entries in the songkick table before writing more (in case the city is update by user and we need to rebuild the table on the fly)
     // TODO: we need to be writing the songkick metro area to local storage
+    var builtURL = 'https://api.songkick.com/api/3.0/search/locations.json?query=' + localStorage.getItem('city') + ' ' + localStorage.getItem('state') + '&apikey=A1gWVGMiT6nFuDTr';
+    console.log("builtURL: " + builtURL);
     $.ajax({ // the request to the API
-        url: 'https://api.songkick.com/api/3.0/search/locations.json?query=' + localStorage.getItem("city") + '&apikey=A1gWVGMiT6nFuDTr', // where the data is
+        url: builtURL, // where the data is
         method: 'GET'
     }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
         console.log('location search response came back!!!');
