@@ -1,4 +1,4 @@
-.jumbotron{
+body{
     background-image: url(../images/crowd_sea.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -8,29 +8,41 @@
     background-size: cover;
     height:100%;
 }
-.page-header{
+/* .jumbotron{
+    background-image: url(../images/crowd_sea.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:100%;
+} */
+/* .page-header{
     height: 10%;
     margin-left:10%;
     color:yellow;
     margin-bottom:40px;
-    font-family: 'Monoton', cursive;
-}
-table{
-    background-color:white;
-}
-h3{
-    color:yellow;
+    font-family: 'Monoton', cursive; */
+/* } */
+.btn-default{
+    background:gold;
 }
 .title{
-    font-weight: 400px;
+    font-weight: 200px;
     color:gold;
     font-family: 'Monoton', cursive;
-    font-size:100px;
+    font-size:50px;
+    margin-left:12px;
 }
 p{
     font-family: 'Righteous', cursive;
     font-size:20px;
     color:gold;
+    margin-left:24px;
+}
+form{
+    float:right
 }
 label{
     font-weight: 50px;
@@ -38,7 +50,7 @@ label{
     overflow-wrap: break-word;
     color:gold;
 }
-#eventTable {
+#eventTable{
     background-color:white;
     width: 40vw;
     max-height:300px;
