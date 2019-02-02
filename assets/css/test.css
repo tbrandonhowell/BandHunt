@@ -42,6 +42,7 @@ label{
 #eventTable{
     background-color:white;
     color:black;
+    height:500px;
 }
 #eventTable tbody{
     display:block;
