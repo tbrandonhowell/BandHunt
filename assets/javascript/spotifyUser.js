@@ -27,7 +27,6 @@ if (accessToken) {
             $("#spotifyRealName").text(spotifyRealName); // write the spotify user info to the screen
             console.log("songkick api call metroAreaName value: " + metroAreaName);
             var updateRightSide = '<h3>Spotify is connected!</h3><h4>Enter a name for your playlist and hit "Create" to add a playlist of upcoming bands to your Spotify account!</h4><input class="form-control" type="text" placeholder="Input Playlist Name" id="inputPlaylistName"><button class="btn btn-primary" id="createPlaylistBTN">Create</button>';
-            // TODO: make ^^ this link clickable
             $("#rightSide").empty(); // clear the 'rightSide' div and 
             $("#rightSide").html(updateRightSide); // paint new message requesting playlist creation
         },

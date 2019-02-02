@@ -29,7 +29,7 @@ form{
     float:right;
     text-shadow: 0 0 5px #000000, 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000;
 }
-h3,h4,h6{
+h3,h4,h5,h6{
     color:gold !important;
     text-shadow: 0 0 5px #000000, 0 0 5px #000000, 0 0 10px #000000, 0 0 15px #000000;
 }
