@@ -75,6 +75,16 @@ window.onload = function () { // open onload
 //===////////////////////////////
 
 
+//============================
+// CAPTURE THE SIZE OF THE 'rightSide' DIV
+console.log("rightSide div width: " + $("#rightSide").width());
+console.log("rightSide div height: " + $("#rightSide").height());
+// CAPTURE THE SIZE OF THE 'leftSide' DIV
+console.log("leftSide div width: " + $("#leftSide").width());
+console.log("leftSide div height: " + $("#leftSide").height());
+//============================
+
+
 // //============================
 // // ADD SPOTIFY LINK HREF TO DOM
 // var spotifyLink = "https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=" + spotifyRedirDest + "&scope=playlist-modify-public";
@@ -110,23 +120,30 @@ $("#state").val(localStorage.getItem("state"));
 
 //=============================
 // CAPTURE THE CLICK ON CITY/STATE SUBMIT
-$("#submit").on("click", function(event) { 
-    console.log("click captured");
+$("#submit").on("click", function(event) {
+    console.log("click captured"); 
     event.preventDefault(); // prevent form from trying to submit/refresh the page  
-    var newCity = $("#city").val().trim(); // get the city input
-    console.log("newCity: " + newCity);
-    var newState = $("#state").val().trim(); // get the state input
-    console.log("newState: " + newState);
-    window.localStorage.setItem("city",newCity); // set values to local storage
-    window.localStorage.setItem("state",newState); // set values to local storage
-    console.log("city/state localStorage values set");
-    if (accessToken) { // if the accessToken exists
-        // ^^ update the right div to have the "create a playlist" message
-        var updateRightSide = '<h3>Spotify is connected!</h3><h4>Enter a name for your playlist and hit "Create" to add a playlist of upcoming bands to your Spotify account!</h4><input class="form-control" type="text" placeholder="Input Playlist Name" id="inputPlaylistName"><button class="btn btn-primary" id="createPlaylistBTN">Create</button>';
-        $("#rightSide").empty(); // clear the 'rightSide' div and 
-        $("#rightSide").html(updateRightSide); // paint new message requesting playlist creation
-    };
-    songkickAPI();
+    // make sure the city name wasn't empty
+    if ($("#city").val().trim() == "") { // if the city field is empty
+        console.log("empty city name")
+        $("#city").attr("style","border: 3px solid red;"); // make the outline red
+    } else { // otherwise if the city field has an input
+        $("#city").attr("style",""); // reset the form field outline in case they previously submitted an empty city
+        var newCity = $("#city").val().trim(); // get the city input
+        console.log("newCity: " + newCity);
+        var newState = $("#state").val().trim(); // get the state input
+        console.log("newState: " + newState);
+        window.localStorage.setItem("city",newCity); // set values to local storage
+        window.localStorage.setItem("state",newState); // set values to local storage
+        console.log("city/state localStorage values set");
+        if (accessToken) { // if the accessToken exists
+            // ^^ update the right div to have the "create a playlist" message
+            var updateRightSide = '<h3>Spotify is connected!</h3><h4>Enter a name for your playlist and hit "Create" to add a playlist of upcoming bands to your Spotify account!</h4><form id="playlistForm"><input class="form-control" type="text" placeholder="Input Playlist Name" id="inputPlaylistName"><button class="btn btn-primary btn-success" id="createPlaylistBTN">Create</button></form>';
+            $("#rightSide").empty(); // clear the 'rightSide' div and 
+            $("#rightSide").html(updateRightSide); // paint new message requesting playlist creation
+        };
+        songkickAPI();
+    }
 });
 //=============================
 
