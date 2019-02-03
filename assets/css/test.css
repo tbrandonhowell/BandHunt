@@ -58,3 +58,16 @@ th{
 .songkick{
     color:gold;
 }
+.modal-content {
+    background-color: #000000 !important;
+    border: 3px solid gray !important;
+}
+.modal-header, .modal-footer {
+    border: none !important;
+}
+#playlistForm { /* this is in place to override the generic "form" styling earlier in this file */
+    float: none;
+}
+#playlistForm button {
+    margin-top: 3px;
+}

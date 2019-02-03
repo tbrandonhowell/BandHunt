@@ -1,6 +1,7 @@
 console.log("spotifyPlaylist.js is loaded");
 
-$(document).on("click", "#createPlaylistBTN", function() { 
+$(document).on("click", "#createPlaylistBTN", function(event) { 
+    event.preventDefault(); // prevent form from trying to submit/refresh the page  
     console.log("Create playlist button was clicked");
     playlistName = $("#inputPlaylistName").val().trim();
     console.log("playlistName: " + playlistName);
@@ -10,11 +11,20 @@ $(document).on("click", "#createPlaylistBTN", function() {
         $("#inputPlaylistName").attr("style","border: 3px solid red;");
         return;
     };
-    $("#exampleModal").modal(); // trigger the modal
+    $("#pleaseWaitModal").modal({  // trigger the modal
+        backdrop: 'static',
+        keyboard: false
+    });
 
     // TODO: should we ever try to reload the user's last spotify playlist if they come back to the page?
 
     // need to jump into the API to create playlist
+
+
+    // wrap everything with a timeout to get the modal onto the page before things get dicey
+    setTimeout(function(){
+
+
 
     //============================
     // CREATE THE PLAYLIST FIRST
@@ -102,8 +112,10 @@ $(document).on("click", "#createPlaylistBTN", function() {
         var playerFrame = '<iframe src="https://open.spotify.com/embed/user/' + spotifyUserID + '/playlist/' + playlistID + '" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
         $("#rightSide").empty();
         $("#rightSide").append(playerFrame);
-        $("#exampleModal").modal("hide"); // close the modal
+        $("#pleaseWaitModal").modal("hide"); // close the modal
     });
     //============================
+
+}, 1000); // close timeout
 
 }); // close onClick monitoring
