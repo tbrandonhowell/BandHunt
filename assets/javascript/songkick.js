@@ -26,13 +26,14 @@ var songkickAPI = function() {
             method: 'GET'
         }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function        
             $("#eventTable").empty(); // blow out the events table
-            var newFirstRow = '<tr><th>Band</th><th>Venue</th><th>Date</th><th>Vote</th></tr>';
-            $("#eventTable").append(newFirstRow);
+            var newFirstRow = '<tbody><tr><th>Band</th><th>Venue</th><th>Date</th><th>Vote</th></tr>'; 
+            $("#eventTable").append(newFirstRow); // replace first row in events table
             console.log('metro performances response came back!!!');
             console.log(response);
             eventArray = response.resultsPage.results.event;
             console.log("eventArray:");
             console.log(eventArray);
+            artistNameArray = []; // reset the artistNameArray
             for (i=0;i<eventArray.length;i++) { // loop through the events array
                 for (x=0;x<eventArray[i].performance.length;x++) {// within each event, loop through the artists array and print out a row for each artist
                     // convert the date
@@ -50,11 +51,11 @@ var songkickAPI = function() {
                     artistNameArray.push(eventArray[i].performance[x].artist.displayName); // add the artist name to artistNameArray[] that we'll use to query spotify
                 } // close FOR loop
             } // close FOR loop
+            $("eventTable").append("</tbody>"); // close the tbody so the CSS height still works
             console.log("artistNameArray:");
             console.log(artistNameArray);
         }).then(function() { // trigger playlist creation if we're coming back from spotify
             console.log("this should trigger after all songkick processing happens")
-            
         });
     }) // close then
 }; // close songkick()
