@@ -34,8 +34,9 @@ $(document).on("click", "#createPlaylistBTN", function() {
     // GET ARTIST ID BASED ON NAME SEARCH
     }).then(function() {
         console.log("artistNameArray.length: " + artistNameArray.length);
+        artistIdArray = []; // reset the artistIdArray before we add artists to it
         for (n=0;n<artistNameArray.length;n++) {
-            var tempArtistID;
+            var tempArtistID; // can this come out for production?
             $.ajax({ // the request to the API
                 url: 'https://api.spotify.com/v1/search?q="' + artistNameArray[n] + '"&type=artist', // where the data is
                 method: 'GET',
@@ -56,6 +57,7 @@ $(document).on("click", "#createPlaylistBTN", function() {
         console.log(artistIdArray);
         console.log("placeholder: get top tracks array");
         console.log("artistIdArray.length: " + artistIdArray.length);
+        playlistSongsIdArray = []; // reset playlistSongsIdArray
         for (z=0;z<artistIdArray.length;z++) {
             $.ajax({ // the request to the API
                 url: 'https://api.spotify.com/v1/artists/' + artistIdArray[z] + '/top-tracks?country=US', // where the data is
