@@ -12,7 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="headerDiv">
         <div class="row">
             <div class="col-md-4">
                 <h1 class="title">Band Hunt</h1>
@@ -94,11 +94,13 @@
                 <input type="text" class="form-control" value="02-16-2012">
                 <input type="text" class="form-control" value="02-16-2012">
         </div> -->
+    </div> <!-- close "all header" div -->
 
+    <div class="container" id="contentDiv">
         <div class="row">
             <div class="col-md-6" id="leftSide">
                 <table id="eventTable" class="table table-striped table-sm small">
-                    <tbody>
+                    <tbody id="eventTbody">
                     <tr>
                         <th>Band</th>
                         <th>Venue</th>
@@ -107,7 +109,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <h6 class="songkick">powered by SongKick</h6>
+                <!-- <h6 class="songkick">powered by SongKick</h6> -->
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4" id="rightSide"></div>
