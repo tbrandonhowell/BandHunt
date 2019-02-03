@@ -24,7 +24,7 @@ var songkickAPI = function() {
         return $.ajax({ // the request to the API
             url: 'https://api.songkick.com/api/3.0/metro_areas/' + metroArea + '/calendar.json?apikey=A1gWVGMiT6nFuDTr', // where the data is
             method: 'GET'
-        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function
+        }).then(function(response) { // what to do when the API returns data. in this case we're putting the api response into this function        
             $("#eventTable").empty(); // blow out the events table
             var newFirstRow = '<tr><th>Band</th><th>Venue</th><th>Date</th><th>Vote</th></tr>';
             $("#eventTable").append(newFirstRow);
@@ -35,13 +35,15 @@ var songkickAPI = function() {
             console.log(eventArray);
             for (i=0;i<eventArray.length;i++) { // loop through the events array
                 for (x=0;x<eventArray[i].performance.length;x++) {// within each event, loop through the artists array and print out a row for each artist
+                    // convert the date
+                    var cleanDate = moment(eventArray[i].start.date, "YYYY-MM-DD");
+                    cleanDate = moment(cleanDate).format("MMM D");
+                    // create the new row
                     var insertRow = '<tr>';
                     // var insertRow = insertRow + '<td><img src="https://images.sk-static.com/images/media/profile_images/artists/' + eventArray[i].performance[x].artist.id + '/avatar" width="50" height="50" class="img-thumbnail"></td>'; // image would go here
                     var insertRow = insertRow + '<td><a href="' + eventArray[i].uri + '">' + eventArray[i].performance[x].artist.displayName + '</a></td>';
                     var insertRow = insertRow + '<td><a href="' + eventArray[i].venue.uri + '">' + eventArray[i].venue.displayName + '</a></td>';
-                    var insertRow = insertRow + '<td>' + eventArray[i].start.date + '</td>';
-                    // TODO: ^^^ Need to strip the year out of this
-                    // var insertRow = insertRow + '<td>' + eventArray[i].start.time + '</td>';
+                    var insertRow = insertRow + '<td>' + cleanDate + '</td>';
                     var insertRow = insertRow + '<td><a href="#">Favorite Link</a></td>';
                     var insertRow = insertRow + '</tr>';
                     $("#eventTable").append(insertRow);
