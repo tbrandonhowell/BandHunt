@@ -1,12 +1,16 @@
 console.log("spotifyPlaylist.js is loaded");
 
 $(document).on("click", "#createPlaylistBTN", function() { 
-    $("#exampleModal").modal(); // trigger the modal
     console.log("Create playlist button was clicked");
     playlistName = $("#inputPlaylistName").val().trim();
     console.log("playlistName: " + playlistName);
-
-    // TODO: need some validation so empty playlist names don't get passed
+    // make sure the playlist name wasn't empty
+    if (playlistName == "") {
+        console.log("empty playlist name")
+        $("#inputPlaylistName").attr("style","border: 3px solid red;");
+        return;
+    };
+    $("#exampleModal").modal(); // trigger the modal
 
     // TODO: should we ever try to reload the user's last spotify playlist if they come back to the page?
 

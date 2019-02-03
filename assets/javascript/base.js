@@ -25,7 +25,6 @@ var spotifyLink = 'https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5
 //============================
 
 
-
 //============================
 // IMMEDIATELY CAPTURE CITY/STATE FROM IP ADDRESS IN CASE WE NEED IT
 function getIP(json) {
@@ -38,6 +37,7 @@ function getIP(json) {
     console.log("zipState: " + zipState);
 } 
 //============================
+
 
 //============================
 // IMMEDIATELY CAPTURE SPOTIFY ACCESS TOKEN FROM (1) HASH OR (2) LOCAL (IF IT EXISTS)
@@ -69,19 +69,17 @@ console.log("accessToken: " + accessToken);
 //============================
 
 
-
-
-
-
 //===////////////////////////////
 window.onload = function () { // open onload
 //===////////////////////////////
+
 
 // //============================
 // // ADD SPOTIFY LINK HREF TO DOM
 // var spotifyLink = "https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=" + spotifyRedirDest + "&scope=playlist-modify-public";
 // $("#spotifyLink").attr("href",spotifyLink);
 // //============================
+
 
 //============================
 // UPDATE LOCALSTORAGE WITH IP CITY/STATE IF CURRENTLY BLANK
@@ -93,21 +91,23 @@ if (localStorage.getItem("city") === null) { // if the localstorage city value h
     // window.localStorage.setItem("state","NV"); // DELETE: manual override for testing
     console.log("city/state localStorage values set");
 }
-// TODO: should we override the city/state info with updated metro area that comes back from the songkick api?
 //============================
+
 
 //============================
 // WRITE LOCALSTORAGE CITY/STATE TO THE SCREEN
 console.log("city from local storage: " + localStorage.getItem("city"));
 $("#city").attr("value",localStorage.getItem("city"));
 console.log("state from local storage: " + localStorage.getItem("state"));
-$("#state").attr("value",localStorage.getItem("state"));
+// $("#state").attr("value",localStorage.getItem("state"));
+$("#state").val(localStorage.getItem("state"));
+// $("#element-id").val('the value of the option');
 //============================
 
-// TODO: Need to build in the functionality for capturing the city/state from an input field
+
 //=============================
 // CAPTURE THE CLICK ON CITY/STATE SUBMIT
-$("#form").on("click", function(event) { 
+$("#submit").on("click", function(event) { 
     console.log("click captured");
     event.preventDefault(); // prevent form from trying to submit/refresh the page  
     var newCity = $("#city").val().trim(); // get the city input
@@ -117,21 +117,22 @@ $("#form").on("click", function(event) {
     window.localStorage.setItem("city",newCity); // set values to local storage
     window.localStorage.setItem("state",newState); // set values to local storage
     console.log("city/state localStorage values set");
+    if (accessToken) { // if the accessToken exists
+        // ^^ update the right div to have the "create a playlist" message
+        var updateRightSide = '<h3>Spotify is connected!</h3><h4>Enter a name for your playlist and hit "Create" to add a playlist of upcoming bands to your Spotify account!</h4><input class="form-control" type="text" placeholder="Input Playlist Name" id="inputPlaylistName"><button class="btn btn-primary" id="createPlaylistBTN">Create</button>';
+        $("#rightSide").empty(); // clear the 'rightSide' div and 
+        $("#rightSide").html(updateRightSide); // paint new message requesting playlist creation
+    };
     songkickAPI();
 });
 //=============================
 
 
-
-
-
-
 // TODO: does the songkick trigger need to be within the window.onload?
 //============================
-// TRIGGER THE SONGKICK API CALLS FUNCTION
+// TRIGGER THE SONGKICK API CALLS FUNCTION ON LOAD
 songkickAPI();
 //============================
-
 
 
 //============================
@@ -144,13 +145,6 @@ spotifyUserAPI();
 //===////////////////////////////
 }; // close onload
 //===////////////////////////////
-
-
-
-// TODO: need functionality for user to input city name and then it gets pushed to local storage to use in api calls
-
-
-
 
 
 
