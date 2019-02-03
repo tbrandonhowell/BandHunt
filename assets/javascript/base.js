@@ -19,6 +19,7 @@ var songsIdArray = [];
 var playlistName;
 var playlistID;
 var playlistSongsIdArray = [];
+var maxTracks; // max # tracks allowed in a playlist
 var spotifyRedirDest = window.location.href;
 console.log("spotifyRedirDest: " + spotifyRedirDest);
 var spotifyLink = 'https://accounts.spotify.com/authorize?client_id=8ecf5355cbd5468ca774341c25284642&response_type=token&redirect_uri=' + spotifyRedirDest + '&scope=playlist-modify-public';
@@ -97,7 +98,9 @@ if (localStorage.getItem("city") === null) { // if the localstorage city value h
 //============================
 // WRITE LOCALSTORAGE CITY/STATE TO THE SCREEN
 console.log("city from local storage: " + localStorage.getItem("city"));
-$("#city").attr("value",localStorage.getItem("city"));
+if (localStorage.getItem("city") !== "undefined") {
+    $("#city").attr("value",localStorage.getItem("city"));
+}
 console.log("state from local storage: " + localStorage.getItem("state"));
 // $("#state").attr("value",localStorage.getItem("state"));
 $("#state").val(localStorage.getItem("state"));

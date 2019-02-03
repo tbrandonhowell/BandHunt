@@ -58,7 +58,14 @@ $(document).on("click", "#createPlaylistBTN", function() {
         console.log("placeholder: get top tracks array");
         console.log("artistIdArray.length: " + artistIdArray.length);
         playlistSongsIdArray = []; // reset playlistSongsIdArray
-        for (z=0;z<artistIdArray.length;z++) {
+        // limit the number of tracks pushed to the songsIdArray and playlistSongsIdArray (because spotify only allows a max of 100 tracks per playlist)
+        if (artistIdArray.length < 100) {
+            maxTracks = artistIdArray.length;
+        } else {
+            maxTracks = 100;
+        }
+        // loop through the artists and get their top track:
+        for (z=0;z<maxTracks;z++) {
             $.ajax({ // the request to the API
                 url: 'https://api.spotify.com/v1/artists/' + artistIdArray[z] + '/top-tracks?country=US', // where the data is
                 method: 'GET',
