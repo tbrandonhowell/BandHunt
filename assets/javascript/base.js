@@ -75,6 +75,18 @@ window.onload = function () { // open onload
 //===////////////////////////////
 
 
+
+var rightSideHeightObject = $('#contentDiv').height( ($(window).height() - $('#headerDiv').height()) + "px" );
+console.log(rightSideHeightObject);
+var spotifyHeight = rightSideHeightObject[0].clientHeight - 20;
+console.log("spotifyHeight: " + spotifyHeight);
+var rightSideWidthObject = $('#rightSide').width();
+console.log(rightSideWidthObject);
+var spotifyWidth = rightSideWidthObject - 2;
+console.log("spotifyWidth: " + spotifyWidth);
+
+
+
 //============================
 // CAPTURE THE SIZE OF THE 'rightSide' DIV
 console.log("rightSide div width: " + $("#rightSide").width());
