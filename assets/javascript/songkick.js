@@ -58,7 +58,7 @@ var songkickAPI = function() {
                 return; // exit out of the function
             };
             // if there are events, start building out the table
-            var newFirstRow = '<tbody><tr><th>Band</th><th>Venue</th><th>Date</th><th>Vote</th></tr>'; 
+            var newFirstRow = '<tbody id="eventTbody"><tr><th>Band</th><th>Venue</th><th>Date</th><th>Vote</th></tr>'; 
             $("#eventTable").append(newFirstRow); // replace first row in events table
             console.log('metro performances response came back!!!');
             console.log(response);
@@ -89,6 +89,16 @@ var songkickAPI = function() {
                 } // close FOR loop
             } // close FOR loop
             $("eventTable").append("</tbody>"); // close the tbody so the CSS height still works
+            //============================
+            // DYNAMICALLY SET THE HEIGHT OF THE EVENT TABLE
+            console.log("contentDiv height should be: " + ($(window).height() - $('#headerDiv').height()));
+            var tableHeightObject = $('#contentDiv').height( ($(window).height() - $('#headerDiv').height()) );
+            console.log("tableHeight object:");
+            console.log(tableHeightObject);
+            var tableHeight = tableHeightObject[0].clientHeight - 20;
+            console.log(tableHeight);
+            document.getElementById('eventTbody').setAttribute("style","height:" + tableHeight + "px; overflow-y: scroll;");
+            // ^^^ add the styling for height here since we're overwriting the tbody styles in this function
             console.log("artistNameArray:");
             console.log(artistNameArray);
         }).then(function() { // trigger playlist creation if we're coming back from spotify

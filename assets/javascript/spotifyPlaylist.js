@@ -108,8 +108,17 @@ $(document).on("click", "#createPlaylistBTN", function(event) {
         console.log(response);
         });
     }).then(function() {
+        // get height/width for spotify embed
+        var rightSideHeightObject = $('#contentDiv').height( ($(window).height() - $('#headerDiv').height()) + "px" );
+        console.log(rightSideHeightObject);
+        var spotifyHeight = rightSideHeightObject[0].clientHeight - 20;
+        console.log("spotifyHeight: " + spotifyHeight);
+        var rightSideWidthObject = $('#rightSide').width();
+        console.log(rightSideWidthObject);
+        var spotifyWidth = rightSideWidthObject - 2;
+        console.log("spotifyWidth: " + spotifyWidth);
         console.log("placeholder: embed playlist on the page");
-        var playerFrame = '<iframe src="https://open.spotify.com/embed/user/' + spotifyUserID + '/playlist/' + playlistID + '" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+        var playerFrame = '<iframe src="https://open.spotify.com/embed/user/' + spotifyUserID + '/playlist/' + playlistID + '" width="' + spotifyWidth + '" height="' + spotifyHeight + '" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
         $("#rightSide").empty();
         $("#rightSide").append(playerFrame);
         $("#pleaseWaitModal").modal("hide"); // close the modal
