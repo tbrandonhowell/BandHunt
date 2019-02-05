@@ -66,6 +66,7 @@ var songkickAPI = function() {
             console.log("eventArray:");
             console.log(eventArray);
             artistNameArray = []; // reset the artistNameArray
+            songkickArtistArray = []; // reset the songkickArtistArray that will be used for the DB lookups
             for (i=0;i<eventArray.length;i++) { // loop through the events array
                 for (x=0;x<eventArray[i].performance.length;x++) {// within each event, loop through the artists array and print out a row for each artist
                     // convert the date
@@ -106,6 +107,7 @@ var songkickAPI = function() {
                         var insertRow = insertRow + '</tr>';
                         $("#eventTable").append(insertRow);
                         artistNameArray.push(eventArray[i].performance[x].artist.displayName); // add the artist name to artistNameArray[] that we'll use to query spotify
+                        songkickArtistArray.push(eventArray[i].performance[x].artist.id); // add the artist ID to the songkickArtistArray
                     } // close the "if" check for past date
                 } // close FOR loop
             } // close FOR loop
