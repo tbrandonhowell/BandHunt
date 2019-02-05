@@ -72,3 +72,15 @@ th{
 #playlistForm button {
     margin-top: 3px;
 }
+.upVote {
+    height: 20px;
+    width: 20px;
+}
+.downVote {
+    height: 20px;
+    width: 20px;
+}
+.voteCounts {
+    display: inline;
+    font-size: 80%;
+}

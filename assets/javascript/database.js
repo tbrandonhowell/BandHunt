@@ -94,6 +94,7 @@ database.ref().on("value", function (snapshot) {
 
 // The upVote function executes when the user clicks on one of the upvote buttons.
 function upVote (thisBandID) {
+    console.log(thisBandID + " upvote captured");
     var bandFound = false;    // Flag indicating band was found in the database.
     var i = 0;                // Loop counter.
     var newUpVotes = 1;       // New number of upvotes for the band.
@@ -133,6 +134,7 @@ function upVote (thisBandID) {
 
 // The downVote function executes when the user clicks on one of the downVote buttons.
 function downVote (thisBandID) {
+    console.log(thisBandID + " downvote captured");
     var bandFound = false;    // Flag indicating band was found in the database.
     var i = 0;                // Loop counter.
     var newUpVotes = 0;       // New number of up votes for the band.

@@ -81,7 +81,28 @@ var songkickAPI = function() {
                         var insertRow = insertRow + '<td><a href="' + eventArray[i].uri + '">' + eventArray[i].performance[x].artist.displayName + '</a></td>';
                         var insertRow = insertRow + '<td><a href="' + eventArray[i].venue.uri + '">' + eventArray[i].venue.displayName + '</a></td>';
                         var insertRow = insertRow + '<td>' + cleanDate + '</td>';
-                        var insertRow = insertRow + '<td><a href="#">Favorite Link</a></td>';
+                        // var insertRow = insertRow + '<td><a href="#">Favorite Link</a></td>';
+                        // ^^ my original row
+                        // Paul's row:
+                        var thisBandID = eventArray[i].performance[x].artist.id;
+                        insertRow = insertRow + "<td>";
+                        insertRow = insertRow + "<img src='assets/images/Thumbs_up_font_awesome.png' ";
+                        insertRow = insertRow + "class='upVote' ";
+                        insertRow = insertRow + "onClick=upVote(" + thisBandID + ") ";
+                        insertRow = insertRow + "data-bandID=" + thisBandID + ">";
+                        insertRow = insertRow + "<div class='voteCounts' id='up" + thisBandID + "'>";
+                        insertRow = insertRow + getBandUpVotes(thisBandID);
+                        insertRow = insertRow + "</div>";
+                        insertRow = insertRow + "<br />";
+                        insertRow = insertRow + "<img src='assets/images/Thumbs_down_font_awesome.png' ";
+                        insertRow = insertRow + "class='downVote' ";
+                        insertRow = insertRow + "onClick=downVote(" + thisBandID + ") ";
+                        insertRow = insertRow + "data-bandID=" + thisBandID + ">";
+                        insertRow = insertRow + "<div class='voteCounts' id='down" + thisBandID + "'>";
+                        insertRow = insertRow + getBandDownVotes(thisBandID);
+                        insertRow = insertRow + "</div>";
+                        insertRow = insertRow + "</td>";
+                        // end paul's row
                         var insertRow = insertRow + '</tr>';
                         $("#eventTable").append(insertRow);
                         artistNameArray.push(eventArray[i].performance[x].artist.displayName); // add the artist name to artistNameArray[] that we'll use to query spotify
