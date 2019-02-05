@@ -75,6 +75,18 @@ window.onload = function () { // open onload
 //===////////////////////////////
 
 
+
+var rightSideHeightObject = $('#contentDiv').height( ($(window).height() - $('#headerDiv').height()) + "px" );
+console.log(rightSideHeightObject);
+var spotifyHeight = rightSideHeightObject[0].clientHeight - 20;
+console.log("spotifyHeight: " + spotifyHeight);
+var rightSideWidthObject = $('#rightSide').width();
+console.log(rightSideWidthObject);
+var spotifyWidth = rightSideWidthObject - 2;
+console.log("spotifyWidth: " + spotifyWidth);
+
+
+
 //============================
 // CAPTURE THE SIZE OF THE 'rightSide' DIV
 console.log("rightSide div width: " + $("#rightSide").width());
@@ -82,6 +94,16 @@ console.log("rightSide div height: " + $("#rightSide").height());
 // CAPTURE THE SIZE OF THE 'leftSide' DIV
 console.log("leftSide div width: " + $("#leftSide").width());
 console.log("leftSide div height: " + $("#leftSide").height());
+// https://stackoverflow.com/questions/2435377/how-to-make-last-div-stretch-to-fill-screen
+// ^^ picked up up this div size hack from here
+$(window).resize(function(){
+    console.log("contentDiv height should be: " + ($(window).height() - $('#headerDiv').height()));
+    var tableHeightObject = $('#contentDiv').height( ($(window).height() - $('#headerDiv').height()) + "px" );
+    var tableHeight = tableHeightObject[0].clientHeight - 20;
+    console.log("resized tableHeight: " + tableHeight);
+    document.getElementById('eventTbody').setAttribute("style","height:" + tableHeight + "px; overflow-y: scroll;");
+// ^^^ add the styling for height here since we're overwriting the tbody styles in this function
+});
 //============================
 
 
