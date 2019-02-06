@@ -18,6 +18,7 @@ var songkickAPI = function() {
         if (response.resultsPage.totalEntries === 0) { // if the town is not in songkick's database, do this:
             console.log("no match for this town");
             // update the table contents
+            $("#eventTable").attr("style","background: none");
             var newMessage = '<tr><td colspan="4">';
             newMessage = newMessage + '<h3>Did you spell that right?<h3>';
             newMessage = newMessage + '<h4>Unfortunately we weren\'t able find your town in the SongKick database. Try searching for the next largest town or city.</h4>';
@@ -50,6 +51,7 @@ var songkickAPI = function() {
             if (!response.resultsPage.results.event) {
                 console.log("no events for this metro area");
                 // update the table contents
+                $("#eventTable").attr("style","background: none");
                 var newMessage = '<tr><td colspan="4">';
                 newMessage = newMessage + '<h3>Not much happening in your neck of the woods?<h3>';
                 newMessage = newMessage + '<h4>Unfortunately we weren\'t able to find any shows in your area. Try searching for the next largest town or city.</h4>';
@@ -58,6 +60,7 @@ var songkickAPI = function() {
                 return; // exit out of the function
             };
             // if there are events, start building out the table
+            $("#eventTable").attr("style","background-color: #ffffff");
             var newFirstRow = '<tbody id="eventTbody"><tr><th>Band</th><th>Venue</th><th>Date</th><th>Vote</th></tr>'; 
             $("#eventTable").append(newFirstRow); // replace first row in events table
             console.log('metro performances response came back!!!');
