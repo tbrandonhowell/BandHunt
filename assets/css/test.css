@@ -7,7 +7,6 @@ body{
     -o-background-size: cover;
     background-size: cover;
     height:100%;
-    background-color:white;
 }
 .btn-default{
     background:gold;
@@ -50,13 +49,11 @@ label{
 #eventTable{
     background-color:white;
     color:black;
-    /* height:500px; */
     margin-bottom: 0px;
 }
 #eventTable tbody{
     display:block;
     overflow-y:scroll;
-    /* height:500px; */
 }
 th{
     font-size:20px;
@@ -91,4 +88,26 @@ th{
 .voteCounts {
     display: inline;
     font-size: 80%;
+}
+@media (min-width: 400px) {
+    body {
+        background: black;
+    }
+}
+
+@media (min-width: 500p) {
+    body{
+        background:black;
+    }
+}
+
+@media (min-width: 600px) {
+    body {
+        background:black;;
+    }
+}
+@media (min-width: 700px) {
+    .element {
+        background: black;
+    }
 }
