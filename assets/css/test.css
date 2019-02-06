@@ -92,3 +92,6 @@ th{
     display: inline;
     font-size: 80%;
 }
+.table td, .table th {
+    border-top: 0px; 
+}
