@@ -89,31 +89,11 @@ th{
     display: inline;
     font-size: 80%;
 }
-<<<<<<< HEAD
-@media (min-width: 400px) {
+@media (max-width: 700px) {
     body {
         background: black;
     }
 }
-
-@media (min-width: 500p) {
-    body{
-        background:black;
-    }
-}
-
-@media (min-width: 600px) {
-    body {
-        background:black;;
-    }
-}
-@media (min-width: 700px) {
-    .element {
-        background: black;
-    }
-}
-=======
 .table td, .table th {
     border-top: 0px; 
 }
->>>>>>> master
