@@ -89,6 +89,7 @@ th{
     display: inline;
     font-size: 80%;
 }
+<<<<<<< HEAD
 @media (min-width: 400px) {
     body {
         background: black;
@@ -111,3 +112,8 @@ th{
         background: black;
     }
 }
+=======
+.table td, .table th {
+    border-top: 0px; 
+}
+>>>>>>> master
