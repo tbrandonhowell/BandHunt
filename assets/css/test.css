@@ -7,10 +7,18 @@ body{
     -o-background-size: cover;
     background-size: cover;
     height:100%;
+    background-color:white;
 }
 .btn-default{
     background:gold;
     font-weight: bold;
+    font-family: 'Righteous', cursive;
+}
+#city{
+    font-family: 'Righteous', cursive;
+}
+#state{
+    font-family: 'Righteous', cursive;
 }
 .title{
     font-weight: 200px;
