@@ -100,6 +100,9 @@ $(window).resize(function(){
     console.log("contentDiv height should be: " + ($(window).height() - $('#headerDiv').height()));
     var tableHeightObject = $('#contentDiv').height( ($(window).height() - $('#headerDiv').height()) + "px" );
     var tableHeight = tableHeightObject[0].clientHeight - 20;
+    if (tableHeight < 300) {
+        tableHeight = 300;
+    }
     console.log("resized tableHeight: " + tableHeight);
     document.getElementById('eventTbody').setAttribute("style","height:" + tableHeight + "px; overflow-y: scroll;");
 // ^^^ add the styling for height here since we're overwriting the tbody styles in this function

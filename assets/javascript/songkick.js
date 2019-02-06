@@ -122,6 +122,9 @@ var songkickAPI = function() {
             console.log("tableHeight object:");
             console.log(tableHeightObject);
             var tableHeight = tableHeightObject[0].clientHeight - 20;
+            if (tableHeight < 300) {
+                tableHeight = 300;
+            }
             console.log(tableHeight);
             document.getElementById('eventTbody').setAttribute("style","height:" + tableHeight + "px; overflow-y: scroll;");
             // ^^^ add the styling for height here since we're overwriting the tbody styles in this function
