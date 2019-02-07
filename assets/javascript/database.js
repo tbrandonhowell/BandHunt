@@ -13,6 +13,10 @@ firebase.initializeApp(config);
 var database = firebase.database();
 // Create a holder for an array representation of the database.
 var dbArray = [];
+// Get a copy from local storage of the array of bands already voted for.
+// This statement creates an empty array if there is nothing in local memeory.
+var votesArray = JSON.parse(localStorage.getItem('bandVotes')) || [];
+
 
 // getBandUpVotes returns the number of up votes the band has as specified in
 // the database, or 0 if the bandID does not exist yet in the database.
@@ -94,80 +98,94 @@ database.ref().on("value", function (snapshot) {
 
 // The upVote function executes when the user clicks on one of the upvote buttons.
 function upVote (thisBandID) {
-    console.log(thisBandID + " upvote captured");
     var bandFound = false;    // Flag indicating band was found in the database.
     var i = 0;                // Loop counter.
     var newUpVotes = 1;       // New number of upvotes for the band.
     var newDownVotes = 0;     // New number of down votes for the band.
 
-    // Repeat until the band is found in the database, or all elements have been searched.
-    while (i < dbArray.length && ! bandFound) {
-        // If the band was found in the database:
-        if (dbArray[i].bandID === thisBandID) {
-            bandFound = true;
-            // Increment the number of up votes for the band by 1.
-            newUpVotes = dbArray[i].upVotes + 1;
-            // Record the current number of down votes for the band.
-            newDownVotes = dbArray[i].downVotes;
-            // Update the child in the database for this band with the new
-            // number of up votes and down votes.
-            database.ref(dbArray[i].key).update({
-                bandID: thisBandID,
-                upVotes: newUpVotes,
-                downVotes: newDownVotes
-            });
-        } else {
-            i = i + 1;    // Increment loop counter.
+    // If this band has not been previously voted for by this user, do the following:
+    if (jQuery.inArray(thisBandID, votesArray) === -1) {
+        // Add this BandID to the array of bands voted for by this user.
+        votesArray.push(thisBandID);
+        // Write the updated array to local storage.
+        localStorage.setItem('bandVotes', JSON.stringify(votesArray));
+
+        // Repeat until the band is found in the database, or all elements have been searched.
+        while (i < dbArray.length && ! bandFound) {
+            // If the band was found in the database:
+            if (dbArray[i].bandID === thisBandID) {
+                bandFound = true;
+                // Increment the number of up votes for the band by 1.
+                newUpVotes = dbArray[i].upVotes + 1;
+                // Record the current number of down votes for the band.
+                newDownVotes = dbArray[i].downVotes;
+                // Update the child in the database for this band with the new
+                // number of up votes and down votes.
+                database.ref(dbArray[i].key).update({
+                    bandID: thisBandID,
+                    upVotes: newUpVotes,
+                    downVotes: newDownVotes
+                });
+            } else {
+                i = i + 1;    // Increment loop counter.
+            };
         };
-    };
-    // If the band was not found in the database:
-    if (bandFound === false) {
-        // Create a new child in the database with the current band ID and
-        // the initial values of 1 up vote and 0 down votes.
-        database.ref().push({
-            bandID: thisBandID,
-            upVotes: 1,
-            downVotes: 0
-        });
+        // If the band was not found in the database:
+        if (bandFound === false) {
+            // Create a new child in the database with the current band ID and
+            // the initial values of 1 up vote and 0 down votes.
+            database.ref().push({
+                bandID: thisBandID,
+                upVotes: 1,
+                downVotes: 0
+            });
+        };
     };
 };
 
 // The downVote function executes when the user clicks on one of the downVote buttons.
 function downVote (thisBandID) {
-    console.log(thisBandID + " downvote captured");
     var bandFound = false;    // Flag indicating band was found in the database.
     var i = 0;                // Loop counter.
     var newUpVotes = 0;       // New number of up votes for the band.
     var newDownVotes = 1;     // New number of down votes for the band.
 
-    // Repeat until the band is found in the database, or all elements have been searched.
-    while (i < dbArray.length && !bandFound) {
-        // If the band was found in the database:
-        if (dbArray[i].bandID === thisBandID) {
-            bandFound = true;
-            // Increment the number of down votes by 1.
-            newDownVotes = dbArray[i].downVotes + 1;
-            // Record the current number of up votes for the band.
-            newUpVotes = dbArray[i].upVotes;
-            // Update the child in the database for this band with the new
-            // number of up votes and down votes.
-            database.ref(dbArray[i].key).update({
-                bandID: thisBandID,
-                upVotes: newUpVotes,
-                downVotes: newDownVotes
-            });
-        } else {
-            i = i + 1;     // Increment loop counter.
+    // If this band has not been previously voted for by this user, do the following:
+    if (jQuery.inArray(thisBandID, votesArray) === -1) {
+        // Add this BandID to the array of bands voted for by this user.
+        votesArray.push(thisBandID);
+        // Write the updated array to local storage.
+        localStorage.setItem('bandVotes', JSON.stringify(votesArray));
+
+        // Repeat until the band is found in the database, or all elements have been searched.
+        while (i < dbArray.length && !bandFound) {
+            // If the band was found in the database:
+            if (dbArray[i].bandID === thisBandID) {
+                bandFound = true;
+                // Increment the number of down votes by 1.
+                newDownVotes = dbArray[i].downVotes + 1;
+                // Record the current number of up votes for the band.
+                newUpVotes = dbArray[i].upVotes;
+                // Update the child in the database for this band with the new
+                // number of up votes and down votes.
+                database.ref(dbArray[i].key).update({
+                    bandID: thisBandID,
+                    upVotes: newUpVotes,
+                    downVotes: newDownVotes
+                });
+            } else {
+                i = i + 1;     // Increment loop counter.
+            };
         };
-    };
-    // If the band was not found in the database:
-    if (bandFound === false) {
-        // Create a new child in the database with the current band ID and
-        // the inital value of 1 down vote and 0 up votes.
-        database.ref().push({
-            bandID: thisBandID,
-            upVotes: 0,
-            downVotes: 1
-        });
+        // If the band was not found in the database:
+        if (bandFound === false) {
+            // Create a new child in the database with the current band ID and
+            // the inital value of 1 down vote and 0 up votes.
+            database.ref().push({
+                bandID: thisBandID,
+                upVotes: 0,
+                downVotes: 1
+            });
+        };
     };
 };
